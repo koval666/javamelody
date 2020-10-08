@@ -173,6 +173,7 @@ class HtmlReport extends HtmlAbstractReport {
 		}
 		writeln("<script type='text/javascript' src='?resource=customizableMonitoring.js'></script>");
 		writeJavaScript();
+		writeShowSqlScript();
 		writeln("</head><body>");
 	}
 
@@ -221,6 +222,15 @@ class HtmlReport extends HtmlAbstractReport {
 		writeln("    }");
 		writeln("  }");
 		writeln("}");
+		writeln(SCRIPT_END);
+	}
+
+	private void writeShowSqlScript() throws IOException {
+		writeln(SCRIPT_BEGIN);
+		writeln("	document.addEventListener('DOMContentLoaded', ");
+		writeln("		function() {");
+		writeln("			showHide('detailssql');");
+		writeln("		});");
 		writeln(SCRIPT_END);
 	}
 
